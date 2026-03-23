@@ -13,6 +13,7 @@ API RESTful desenvolvida para gerenciamento de reservas de cinema, permitindo qu
 * PostgreSQL (ou SQLite para desenvolvimento)
 * Poetry
 * Docker
+* Swagger (drf-yasg)
 
 ---
 
@@ -80,7 +81,7 @@ A API utiliza autenticação via JWT.
 ### Login
 
 ```http
-POST /login
+POST /login/
 ```
 
 Body:
@@ -96,6 +97,7 @@ Resposta:
 
 ```json
 {
+  "refresh": "refresh_token",
   "access": "token_jwt"
 }
 ```
@@ -119,19 +121,35 @@ Resposta:
 
 ### 💺 Assentos
 
-* `GET /sessions/{id}/seats/` → mapa de assentos
+* `GET /movies/{movie_id}/sessions/{session_id}/seats/` → mapa de assentos
 
 ---
 
 ### 🎟 Reservas
 
-* `POST /sessions/{id}/reserve/` → reservar assento
+* `POST /movies/{movie_id}/sessions/{session_id}/reserve/` → reservar assento (requer JWT)
+
+---
+
+### 🎫 Meus Tickets
+
+* `GET /movies/{movie_id}/sessions/my-tickets/` → lista os tickets do usuário autenticado
 
 ---
 
 ### 👤 Usuário
 
 * `POST /login/` → autenticação
+
+---
+
+## 📚 Documentação da API
+
+A documentação interativa está disponível via Swagger:
+
+```
+http://localhost:8000/swagger/
+```
 
 ---
 
@@ -148,6 +166,10 @@ Resposta:
   * usuário
   * sessão
   * assento
+
+* Não é possível reservar o mesmo assento duas vezes
+
+* Apenas usuários autenticados podem realizar reservas
 
 ---
 
@@ -173,11 +195,11 @@ docker-compose up --build
 
 ---
 
-## 🧪 Testes
+## 💽 Banco de Dados
 
-```bash
-poetry run python manage.py test
-```
+O projeto utiliza SQLite por padrão para facilitar a execução local.
+
+A utilização de PostgreSQL pode ser configurada para ambientes de produção.
 
 ---
 

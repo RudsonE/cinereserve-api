@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'movies',
     'showtimes',
     'reservations',
+    'drf_yasg'
 ]
 
 MIDDLEWARE = [
