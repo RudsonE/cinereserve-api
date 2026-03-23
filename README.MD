@@ -102,6 +102,16 @@ Resposta:
 }
 ```
 
+### 👤 Test Admin User
+
+Para facilitar testes da API, você pode usar o usuário administrador abaixo:
+
+```json
+{
+  "username": "admin",
+  "password": "admin"
+}
+
 ---
 
 ## 📌 Endpoints
