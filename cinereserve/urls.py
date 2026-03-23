@@ -8,4 +8,5 @@ urlpatterns = [
     path('movies/', include('movies.urls')),
     path('movies/<int:movie_id>/sessions/', include('showtimes.urls')),
     path('movies/<int:movie_id>/sessions/', include('reservations.urls')),
+    path('movies/<int:movie_id>/sessions/', include('reservations.urls'))
 ]
